@@ -13,32 +13,34 @@ Things you may want to cover:
 
 * Database creation
 
+#chat-space DB設計
 
-##usersテーブル
+usersテーブル
 
 |Column|Type|Options|
 |------|----|-------|
 |name|string|index: true, null:false, unique: true|
 |mail|string|null: false|
 
-###Association
+Association
 has_many :groups, through: members
 has_many :messages
 has_many :members
 
 
-##groupsテーブル
+groupsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false, unique: true
 
-###Association
-has_many :users, through: :members
+Association
+has_many :users, through: 
+has_many :members
 has_many :messages
 
 
-##messagesテーブル
+messagesテーブル
 
 |Column|Type|Options|
 |------|----|-------|
@@ -47,21 +49,22 @@ has_many :messages
 |user_id|integer|null: false, foreign_key: true 
 |group_id|integer|null: false, foreign_key: true
 
-###Association
+Association
 belongs_to :group
 belongs_to :user
 
 
-##membersテーブル
+membersテーブル
 
 |Column|Type|Options|
 |------|----|-------|
 |user_id|integer|null:false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
 
-###Association
+Association
 belongs_to :group
 belongs_to :user
+
 
 
 * Database initialization
